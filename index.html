@@ -1,0 +1,464 @@
+<!-- v1.0.3 -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinAI - Seu Agente Financeiro no WhatsApp</title>
+    <meta name="description" content="Organize suas finanças com inteligência artificial diretamente no seu WhatsApp.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="background-glow"></div>
+
+    <header id="header">
+        <div class="container">
+            <div class="logo">Fin<span class="highlight">AI</span></div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#features">Funcionalidades</a></li>
+                    <li><a href="#how-it-works">Como Funciona</a></li>
+                    <li><a href="#plans">Planos</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+            <a href="#plans" class="btn-primary header-btn">Começar Agora</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Domine suas Finanças com <span class="text-gradient">Inteligência Artificial</span></h1>
+                    <p>O assistente financeiro pessoal que vive no seu WhatsApp. Simples, rápido e inteligente.</p>
+                    <div class="hero-cta">
+                        <a href="#plans" class="btn-primary">Começar Agora</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <!-- Placeholder for a phone mockup or abstract AI visual -->
+                    <div class="phone-carousel-wrapper">
+                        <div class="carousel-track">
+                            <!-- Card 1: Expense Tracking -->
+                            <div class="carousel-card active">
+                                <div class="chat-interface">
+                                    <div class="chat-header">
+                                        <div class="chat-avatar"><i class="fas fa-robot"></i></div>
+                                        <div class="chat-info">
+                                            <span class="chat-name">Finanças AI</span>
+                                            <span class="chat-status">online</span>
+                                        </div>
+                                    </div>
+                                    <div class="chat-body">
+                                        <div class="message sent">
+                                            <p>Olá! Gastei R$ 45,00 no almoço hoje.</p>
+                                            <span class="time">12:30</span>
+                                        </div>
+                                        <div class="message received">
+                                            <p>Anotado! 📝<br>Categoria: Alimentação<br>Saldo restante: R$ 850,00</p>
+                                            <span class="time">12:30</span>
+                                        </div>
+                                    </div>
+                                    <div class="chat-input-area">
+                                        <div class="input-placeholder"></div>
+                                        <div class="send-btn"><i class="fas fa-paper-plane"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 2: Pie Chart Request -->
+                            <div class="carousel-card">
+                                <div class="chat-interface">
+                                    <div class="chat-header">
+                                        <div class="chat-avatar"><i class="fas fa-robot"></i></div>
+                                        <div class="chat-info">
+                                            <span class="chat-name">Finanças AI</span>
+                                            <span class="chat-status">online</span>
+                                        </div>
+                                    </div>
+                                    <div class="chat-body">
+                                        <div class="message sent">
+                                            <p>Me mostra um gráfico de gastos por categoria?</p>
+                                            <span class="time">14:15</span>
+                                        </div>
+                                        <div class="message received">
+                                            <p>Aqui está seu gráfico de pizza! 📊<br>Alimentação: 40%<br>Transporte:
+                                                30%<br>Lazer: 20%<br>Outros: 10%</p>
+                                            <div class="fake-chart-pie"></div>
+                                            <span class="time">14:15</span>
+                                        </div>
+                                    </div>
+                                    <div class="chat-input-area">
+                                        <div class="input-placeholder"></div>
+                                        <div class="send-btn"><i class="fas fa-paper-plane"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 3: Bill Reminder -->
+                            <div class="carousel-card">
+                                <div class="chat-interface">
+                                    <div class="chat-header">
+                                        <div class="chat-avatar"><i class="fas fa-robot"></i></div>
+                                        <div class="chat-info">
+                                            <span class="chat-name">Finanças AI</span>
+                                            <span class="chat-status">online</span>
+                                        </div>
+                                    </div>
+                                    <div class="chat-body">
+                                        <div class="message received">
+                                            <p>🔔 <strong>Lembrete:</strong><br>Seu aluguel vence amanhã! Já pagou?</p>
+                                            <span class="time">09:00</span>
+                                        </div>
+                                        <div class="message sent">
+                                            <p>Vou pagar agora, obrigado!</p>
+                                            <span class="time">09:05</span>
+                                        </div>
+                                    </div>
+                                    <div class="chat-input-area">
+                                        <div class="input-placeholder"></div>
+                                        <div class="send-btn"><i class="fas fa-paper-plane"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 4: Spending Analysis -->
+                            <div class="carousel-card">
+                                <div class="chat-interface">
+                                    <div class="chat-header">
+                                        <div class="chat-avatar"><i class="fas fa-robot"></i></div>
+                                        <div class="chat-info">
+                                            <span class="chat-name">Finanças AI</span>
+                                            <span class="chat-status">online</span>
+                                        </div>
+                                    </div>
+                                    <div class="chat-body">
+                                        <div class="message received">
+                                            <p>⚠️ <strong>Alerta de Gastos:</strong><br>Seus gastos com transporte
+                                                subiram 20% este mês.</p>
+                                            <button class="chat-btn">Analisar gastos</button>
+                                            <span class="time">18:45</span>
+                                        </div>
+                                    </div>
+                                    <div class="chat-input-area">
+                                        <div class="input-placeholder"></div>
+                                        <div class="send-btn"><i class="fas fa-paper-plane"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 5: Audio Message -->
+                            <div class="carousel-card">
+                                <div class="chat-interface">
+                                    <div class="chat-header">
+                                        <div class="chat-avatar"><i class="fas fa-robot"></i></div>
+                                        <div class="chat-info">
+                                            <span class="chat-name">Finanças AI</span>
+                                            <span class="chat-status">online</span>
+                                        </div>
+                                    </div>
+                                    <div class="chat-body">
+                                        <div class="message sent audio-msg">
+                                            <div class="audio-content">
+                                                <i class="fas fa-play"></i>
+                                                <div class="audio-wave"></div>
+                                                <span class="audio-duration">0:15</span>
+                                            </div>
+                                            <span class="time">19:20</span>
+                                        </div>
+                                        <div class="message received">
+                                            <p>Entendido! 🎤<br>Gasto de R$ 120,00 no Mercado registrado.</p>
+                                            <span class="time">19:20</span>
+                                        </div>
+                                    </div>
+                                    <div class="chat-input-area">
+                                        <div class="input-placeholder"></div>
+                                        <div class="send-btn"><i class="fas fa-paper-plane"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 6: Receipt Scanning -->
+                            <div class="carousel-card">
+                                <div class="chat-interface">
+                                    <div class="chat-header">
+                                        <div class="chat-avatar"><i class="fas fa-robot"></i></div>
+                                        <div class="chat-info">
+                                            <span class="chat-name">Finanças AI</span>
+                                            <span class="chat-status">online</span>
+                                        </div>
+                                    </div>
+                                    <div class="chat-body">
+                                        <div class="message sent image-msg">
+                                            <div class="image-preview">
+                                                <img src="assets/receipt_example.png" alt="Recibo">
+                                            </div>
+                                            <span class="time">20:10</span>
+                                        </div>
+                                        <div class="message received">
+                                            <p>Li seu recibo! 🧾<br>Valor: R$ 89,90<br>Local: Restaurante Sabor<br>Data:
+                                                23/11</p>
+                                            <span class="time">20:11</span>
+                                        </div>
+                                    </div>
+                                    <div class="chat-input-area">
+                                        <div class="input-placeholder"></div>
+                                        <div class="send-btn"><i class="fas fa-paper-plane"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="carousel-control prev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-control next"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+
+                    <div class="carousel-indicators">
+                        <span class="dot active" data-slide="0"></span>
+                        <span class="dot" data-slide="1"></span>
+                        <span class="dot" data-slide="2"></span>
+                        <span class="dot" data-slide="3"></span>
+                        <span class="dot" data-slide="4"></span>
+                        <span class="dot" data-slide="5"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features">
+            <div class="container">
+                <h2 class="section-title">Por que usar o FinAI?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="icon"><i class="fab fa-whatsapp"></i></div>
+                        <h3>100% no WhatsApp</h3>
+                        <p>Sem apps pesados. Converse com suas finanças como conversa com um amigo.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon"><i class="fas fa-chart-pie"></i></div>
+                        <h3>Relatórios Instantâneos</h3>
+                        <p>Peça gráficos e resumos a qualquer momento e receba na hora.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon"><i class="fas fa-brain"></i></div>
+                        <h3>IA Inteligente</h3>
+                        <p>Categorização automática de gastos e dicas personalizadas de economia.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3>Segurança Total</h3>
+                        <p>Seus dados são criptografados e protegidos com os maiores padrões de segurança.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works">
+            <div class="container">
+                <h2 class="section-title">Como Funciona</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Assine o Plano</h3>
+                        <p>Escolha o plano ideal para você e faça o cadastro em segundos.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Adicione no WhatsApp</h3>
+                        <p>Você receberá um link para iniciar a conversa com o FinAI.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Comece a Usar</h3>
+                        <p>Envie áudios, textos ou fotos de comprovantes. O FinAI cuida do resto.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Plans Section -->
+        <section id="plans" class="plans-section">
+            <div class="container">
+                <h2 class="section-title">Planos Simples e Transparentes</h2>
+
+                <div class="pricing-toggle">
+                    <span class="toggle-label">Mensal</span>
+                    <label class="switch">
+                        <input type="checkbox" id="billing-toggle" checked>
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="toggle-label">Anual <span class="discount-badge">-20%</span></span>
+                </div>
+
+                <div class="plans-grid">
+                    <!-- Básico -->
+                    <div class="plan-card">
+                        <h3>Básico</h3>
+                        <div class="price-container">
+                            <div class="price" data-monthly="R$ 7,90" data-annual="R$ 4,90">R$ 4,90</div>
+                            <span class="period">/mês</span>
+                        </div>
+                        <p class="billing-info">Cobrado anualmente</p>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> 30 registros por mês</li>
+                            <li><i class="fas fa-check"></i> Relatórios básicos</li>
+                            <li><i class="fas fa-check"></i> Reconhecimento de texto</li>
+                            <li><i class="fas fa-check"></i> Lembretes de vencimento</li>
+                            <li><i class="fas fa-check"></i> Acesso ao FAQ</li>
+                        </ul>
+                        <a id="basic-plan-btn" target="_blank" rel="noopener noreferrer" class="btn-secondary"
+                            href="https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=3352015c6185499498c51da616e02153"
+                            data-monthly-href="https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=7be03d9c782a4592a6494a976f5ab478"
+                            data-annual-href="https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=3352015c6185499498c51da616e02153">Começar
+                            Básico</a>
+                    </div>
+
+                    <!-- Pro -->
+                    <div class="plan-card popular">
+                        <div class="badge">Mais Popular</div>
+                        <h3>Pro</h3>
+                        <div class="price-container">
+                            <div class="price" data-monthly="R$ 14,90" data-annual="R$ 9,90">R$ 9,90</div>
+                            <span class="period">/mês</span>
+                        </div>
+                        <p class="billing-info">Cobrado anualmente</p>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> <strong>Tudo do Básico e mais:</strong></li>
+                            <li><i class="fas fa-check"></i> Registros ilimitados</li>
+                            <li><i class="fas fa-check"></i> Relatórios avançados (Gráficos)</li>
+                            <li><i class="fas fa-check"></i> Reconhecimento de Áudio e Imagem</li>
+                            <li><i class="fas fa-check"></i> Notificações inteligentes</li>
+                            <li><i class="fas fa-check"></i> Categorização automática</li>
+                            <li><i class="fas fa-check"></i> Exportação de dados</li>
+                            <li><i class="fas fa-check"></i> Suporte prioritário</li>
+                        </ul>
+                        <a id="pro-plan-btn" target="_blank" rel="noopener noreferrer" class="btn-primary"
+                            href="https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=f57ee5d202dd43f388231cd26e9266cc"
+                            data-monthly-href="https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=ca7cd90867fd430b818cf7d2a4d31b14"
+                            data-annual-href="https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=f57ee5d202dd43f388231cd26e9266cc">Assinar
+                            Pro</a>
+                    </div>
+
+                    <!-- Enterprise -->
+                    <div class="plan-card">
+                        <h3>Enterprise</h3>
+                        <div class="price-container enterprise-price">
+                            <div class="price-custom">Sob Consulta</div>
+                        </div>
+                        <p class="billing-info">Para grandes volumes</p>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> <strong>Tudo do Pro e mais:</strong></li>
+                            <li><i class="fas fa-check"></i> API Dedicada</li>
+                            <li><i class="fas fa-check"></i> Gerente de Conta</li>
+                            <li><i class="fas fa-check"></i> Integrações customizadas</li>
+                            <li><i class="fas fa-check"></i> SLA Garantido</li>
+                            <li><i class="fas fa-check"></i> Treinamento da equipe</li>
+                        </ul>
+                        <a href="https://wa.me/5511999999999" class="btn-secondary" target="_blank"
+                            rel="noopener noreferrer">Fale Conosco</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq">
+            <div class="container">
+                <h2 class="section-title">Perguntas Frequentes</h2>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">É seguro compartilhar meus dados? <i
+                                class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-content">
+                            <p>Sim! Utilizamos criptografia de ponta a ponta e não compartilhamos seus dados com
+                                terceiros.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Preciso instalar algum aplicativo? <i
+                                class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-content">
+                            <p>Não. Tudo funciona diretamente pelo WhatsApp, que você já tem instalado.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Posso cancelar quando quiser? <i
+                                class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-content">
+                            <p>Com certeza. O cancelamento pode ser feito a qualquer momento sem multas.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">O FinAI entende áudios? <i
+                                class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-content">
+                            <p>Sim! Você pode mandar um áudio dizendo "Gastei 50 reais na padaria" e ele registra
+                                automaticamente.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Posso conectar minha conta bancária? <i
+                                class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-content">
+                            <p>Atualmente, o FinAI funciona com input manual (texto, áudio, foto) para garantir total
+                                privacidade. Estamos estudando integrações via Open Finance para o futuro.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Ele reconhece fotos de notas fiscais? <i
+                                class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-content">
+                            <p>Sim! Basta tirar uma foto do cupom fiscal ou da maquininha de cartão que a IA extrai o
+                                valor, a data e a categoria do gasto.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Consigo exportar meus dados? <i
+                                class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-content">
+                            <p>Sim, você pode pedir um relatório em Excel (CSV) ou PDF a qualquer momento diretamente
+                                pelo chat.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Funciona em grupos de WhatsApp? <i
+                                class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-content">
+                            <p>Sim! Você pode adicionar o FinAI em um grupo com seu cônjuge ou sócios para gerenciar
+                                gastos compartilhados.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Existe fidelidade no plano anual? <i
+                                class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-content">
+                            <p>O plano anual oferece um desconto significativo, mas se você cancelar antes, o reembolso
+                                será proporcional ao período não utilizado, conforme nossos termos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">FinAI</div>
+            <p>&copy; 2025 FinAI. Todos os direitos reservados. <span
+                    style="opacity: 0.5; font-size: 0.8rem;">v1.0.2</span></p>
+        </div>
+    </footer>
+
+    <script src="script.js?v=1.0.3"></script>
+</body>
+
+</html>

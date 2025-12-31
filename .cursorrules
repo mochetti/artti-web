@@ -1,0 +1,5 @@
+# AI Coding Rules
+
+- Always skip automated browser testing (browser_subagent) unless explicitly requested by the user.
+- Focus on code edits and explanations.
+- Only run terminal commands when specifically asked to do so.
