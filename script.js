@@ -100,6 +100,46 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
+    // --- Mobile Menu ---
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (hamburger && navLinks) {
+        const toggleMenu = () => {
+            navLinks.classList.toggle('active');
+            const icon = hamburger.querySelector('i');
+            if (icon) {
+                const isOpen = navLinks.classList.contains('active');
+                icon.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
+            }
+        };
+
+        const closeMenu = () => {
+            navLinks.classList.remove('active');
+            const icon = hamburger.querySelector('i');
+            if (icon) {
+                icon.className = 'fas fa-bars';
+            }
+        };
+
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMenu();
+        });
+
+        // Close menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+                closeMenu();
+            }
+        });
+    }
+
     // --- Carousel Logic ---
     const track = document.querySelector('.carousel-track');
     if (track) {
@@ -113,7 +153,10 @@ document.addEventListener('DOMContentLoaded', () => {
         let autoSlideInterval;
 
         function updateCarousel() {
-            const containerWidth = document.querySelector('.phone-carousel-wrapper').offsetWidth;
+            const wrapper = document.querySelector('.phone-carousel-wrapper');
+            if (!wrapper) return;
+
+            const containerWidth = wrapper.offsetWidth;
             const cardWidth = cards[0].offsetWidth;
             const gap = 10;
             const centerOffset = (containerWidth / 2) - (cardWidth / 2);
@@ -150,7 +193,14 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        window.addEventListener('resize', updateCarousel);
+        // Optimized resize handling
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(updateCarousel, 100);
+        });
+
+        // Initial update
         updateCarousel();
         startAutoSlide();
     }

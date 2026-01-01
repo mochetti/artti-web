@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 :root {
     --primary-color: #00c2cc;
     /* Cyan/Teal */
@@ -14,18 +20,17 @@
     --transition: all 0.3s ease;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+html,
+body {
+    overflow-x: hidden;
+    width: 100%;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Outfit', sans-serif;
     background-color: var(--bg-color);
     color: var(--text-main);
     line-height: 1.6;
-    overflow-x: hidden;
     /* Modern Mesh Gradient Background */
     background-image:
         radial-gradient(at 0% 0%, rgba(0, 194, 204, 0.15) 0px, transparent 50%),
@@ -318,10 +323,13 @@ header .container {
 
 /* Hero Section */
 #hero {
-    padding: 160px 0 100px;
+    padding: 160px 0 10px;
     min-height: 100vh;
     display: flex;
     align-items: center;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: visible;
 }
 
 #hero .container {
@@ -332,16 +340,23 @@ header .container {
     align-items: center;
 }
 
+.hero-content h1 {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
 .hero-content p {
     font-size: 1.2rem;
     color: var(--text-muted);
     margin-bottom: 40px;
     max-width: 500px;
+    overflow-wrap: break-word;
 }
 
 /* Features Section */
 #features {
-    padding: 100px 0;
+    padding: 30px 0;
 }
 
 .features-grid {
@@ -356,9 +371,11 @@ header .container {
     max-width: 700px;
     /* Reduced to show approx 1 neighbor */
     margin: 0 auto;
-    overflow: hidden;
+    overflow: visible;
+    /* Changed from hidden to allow shadows */
     position: relative;
-    padding: 20px 0;
+    padding: 20px 0 0;
+    /* Increased bottom padding for shadow */
 }
 
 .carousel-track {
@@ -392,6 +409,24 @@ header .container {
     filter: blur(0);
     pointer-events: auto;
     z-index: 10;
+    position: relative;
+}
+
+.carousel-card.active::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    /* Slightly lower */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    /* More circular/concentrated */
+    height: 40px;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.2) 0%, transparent 75%);
+    z-index: -1;
+    filter: blur(8px);
+    /* Softer edges */
+    pointer-events: none;
 }
 
 /* Chat Interface (Phone Look) - Scoped to card */
@@ -457,15 +492,22 @@ header .container {
 
 .carousel-control.prev {
     left: 20px;
+    background: var(--gradient-main);
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 242, 255, 0.3);
+    border: none;
 }
 
 .carousel-control.next {
     right: 20px;
+    background: var(--gradient-main);
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 242, 255, 0.3);
+    border: none;
 }
 
 .carousel-control:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-50%) scale(1.1);
+    transform: translateY(-50%) scale(1.2);
 }
 
 .carousel-indicators {
@@ -675,9 +717,9 @@ header .container {
 
 /* How it Works */
 #how-it-works {
-    padding: 100px 0;
-    background: #fff;
-    /* White background for contrast */
+    padding: 30px 0;
+    background: transparent;
+    position: relative;
 }
 
 .steps {
@@ -688,17 +730,40 @@ header .container {
 }
 
 .step-number {
-    width: 60px;
-    height: 60px;
-    background: var(--gradient-main);
+    width: 70px;
+    height: 70px;
+    background: var(--bg-color);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin: 0 auto 20px;
-    box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin: 0 auto 30px;
+    color: var(--primary-color);
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+}
+
+.step-number::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: var(--gradient-main);
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+}
+
+.step:hover .step-number {
+    transform: scale(1.1);
+    box-shadow: 0 15px 40px rgba(0, 194, 204, 0.2);
 }
 
 .step h3 {
@@ -711,7 +776,7 @@ header .container {
 
 /* Plans */
 #plans {
-    padding: 100px 0;
+    padding: 30px 0;
 }
 
 .plans-grid {
@@ -844,7 +909,7 @@ header .container {
 
 /* FAQ */
 #faq {
-    padding: 100px 0;
+    padding: 30px 0;
     max-width: 800px;
     margin: 0 auto;
 }
@@ -930,41 +995,140 @@ footer p {
 
 /* Responsive */
 @media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        top: 80px;
+        /* Below header */
+        right: -100%;
+        width: 100%;
+        height: auto;
+        background: rgba(255, 255, 255, 0.98);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 40px 0;
+        transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        z-index: 1001;
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+    }
 
-    .nav-links,
+    .nav-links.active {
+        transform: translateX(-100%);
+    }
+
     .header-btn {
         display: none;
     }
 
     .hamburger {
         display: block;
+        z-index: 1002;
+        color: var(--text-main);
+    }
+
+    #hero {
+        padding-top: 140px;
+        /* Increased to avoid cutoff */
     }
 
     #hero .container {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
         text-align: center;
+        gap: 40px;
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .hero-content {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
     }
 
     .hero-content h1 {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        width: 100%;
     }
 
-    .hero-buttons {
+    .hero-content p {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .hero-visual {
+        width: 100%;
+        max-width: 100%;
+        overflow: visible;
+        /* Critical for shadow visibility */
         display: flex;
-        flex-direction: column;
-        gap: 15px;
-        align-items: center;
+        justify-content: center;
+        padding-bottom: 40px;
     }
 
-    .btn-secondary {
-        margin-left: 0;
+    .hero-cta {
+        display: flex;
+        justify-content: center;
     }
 
     .steps {
         grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .plan-card {
+        width: 100%;
+        max-width: 350px;
+        transform: none !important;
+        margin: 0 auto;
     }
 
     .plan-card.popular {
-        transform: scale(1);
+        transform: none !important;
+        border-width: 2px;
+    }
+
+    .plan-card .btn-primary,
+    .plan-card .btn-secondary {
+        margin-top: 20px;
+        padding: 15px 15px;
+        /* Reduced horizontal padding for mobile */
+        width: 100%;
+        display: block;
+        box-sizing: border-box;
+        /* Redundant but safe */
+    }
+
+    .carousel-card {
+        width: 220px;
+        /* Reduced to ensure it fits with padding */
+    }
+
+    .carousel-control {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .carousel-card {
+        width: 200px;
+    }
+
+    .chat-interface {
+        height: 400px;
     }
 }
