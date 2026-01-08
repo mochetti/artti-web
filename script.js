@@ -203,5 +203,70 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initial update
         updateCarousel();
         startAutoSlide();
-    }
+    } // Close if(track)
+
+    // --- Lead Capture Modal Logic ---
+    const leadModal = document.getElementById('lead-modal');
+    const leadForm = document.getElementById('lead-form');
+    const modalClose = document.querySelector('.modal-close');
+    let pendingCheckoutUrl = '';
+
+    // Function to open modal
+    const openModal = (url) => {
+        pendingCheckoutUrl = url;
+        leadModal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent scroll
+    };
+
+    // Function to close modal
+    const closeModal = () => {
+        leadModal.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scroll
+        leadForm.reset();
+    };
+
+    // Intercept clicks on plan buttons
+    [basicBtn, proBtn].forEach(btn => {
+        if (!btn) return;
+        btn.addEventListener('click', (e) => {
+            const href = btn.getAttribute('href');
+            if (href && !href.includes('wa.me')) {
+                e.preventDefault();
+                openModal(href);
+            }
+        });
+    });
+
+    // Handle form submission
+    leadForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const leadData = {
+            name: document.getElementById('lead-name').value,
+            email: document.getElementById('lead-email').value,
+            phone: document.getElementById('lead-phone').value,
+            plan: pendingCheckoutUrl.includes('preapproval_plan_id') ? 'Subscription' : 'Contact',
+            timestamp: new Date().toISOString()
+        };
+
+        console.log('Lead Data Captured:', leadData);
+
+        const submitBtn = leadForm.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Processando...';
+
+        setTimeout(() => {
+            console.log('Redirecting to checkout:', pendingCheckoutUrl);
+            window.location.href = pendingCheckoutUrl;
+        }, 800);
+    });
+
+    // Close listeners
+    modalClose.addEventListener('click', closeModal);
+    leadModal.addEventListener('click', (e) => {
+        if (e.target === leadModal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && leadModal.classList.contains('active')) closeModal();
+    });
 });

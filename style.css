@@ -323,7 +323,7 @@ header .container {
 
 /* Hero Section */
 #hero {
-    padding: 160px 0 10px;
+    padding: 60px 0 0px;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -356,7 +356,7 @@ header .container {
 
 /* Features Section */
 #features {
-    padding: 30px 0;
+    padding: 0 0;
 }
 
 .features-grid {
@@ -371,11 +371,11 @@ header .container {
     max-width: 700px;
     /* Reduced to show approx 1 neighbor */
     margin: 0 auto;
-    overflow: visible;
-    /* Changed from hidden to allow shadows */
+    overflow: hidden;
+    /* Restored to prevent bleeding into text */
     position: relative;
-    padding: 20px 0 0;
-    /* Increased bottom padding for shadow */
+    padding: 20px 20px 100px;
+    /* Added padding to show shadow & neighbors */
 }
 
 .carousel-track {
@@ -717,7 +717,7 @@ header .container {
 
 /* How it Works */
 #how-it-works {
-    padding: 30px 0;
+    padding: 70px 0;
     background: transparent;
     position: relative;
 }
@@ -776,7 +776,7 @@ header .container {
 
 /* Plans */
 #plans {
-    padding: 30px 0;
+    padding: 70px 0;
 }
 
 .plans-grid {
@@ -909,7 +909,7 @@ header .container {
 
 /* FAQ */
 #faq {
-    padding: 30px 0;
+    padding: 70px 0;
     max-width: 800px;
     margin: 0 auto;
 }
@@ -1028,8 +1028,17 @@ footer p {
     }
 
     #hero {
-        padding-top: 140px;
-        /* Increased to avoid cutoff */
+        padding: 140px 0 40px;
+    }
+
+    #features,
+    #how-it-works,
+    #plans {
+        padding: 40px 0;
+    }
+
+    #faq {
+        padding: 60px 0;
     }
 
     #hero .container {
@@ -1064,11 +1073,15 @@ footer p {
     .hero-visual {
         width: 100%;
         max-width: 100%;
-        overflow: visible;
-        /* Critical for shadow visibility */
+        overflow: hidden;
+        /* Prevent horizontal scroll on mobile */
         display: flex;
+        flex-direction: column;
+        /* Stack phones and dots vertically */
+        align-items: center;
+        /* Center everything */
         justify-content: center;
-        padding-bottom: 40px;
+        padding-bottom: 60px;
     }
 
     .hero-cta {
@@ -1109,9 +1122,24 @@ footer p {
         /* Reduced to ensure it fits with padding */
     }
 
+    .phone-carousel-wrapper {
+        overflow: visible;
+        /* Allow arrows to show outside clipping */
+    }
+
     .carousel-control {
         width: 40px;
         height: 40px;
+    }
+
+    .carousel-control.prev {
+        left: 0;
+        /* Bring inside slightly */
+    }
+
+    .carousel-control.next {
+        right: 0;
+        /* Bring inside slightly */
     }
 }
 
@@ -1130,5 +1158,126 @@ footer p {
 
     .chat-interface {
         height: 400px;
+    }
+}
+
+/* Modal Lead Capture */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: none;
+    /* Hidden by default */
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 40px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 450px;
+    position: relative;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.modal-close:hover {
+    color: var(--secondary-color);
+    transform: rotate(90deg);
+}
+
+.modal-content h2 {
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+    color: var(--text-main);
+}
+
+.modal-content p {
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.5);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(0, 194, 204, 0.1);
+}
+
+.modal-content .btn-primary {
+    width: 100%;
+    margin-top: 10px;
+    padding: 15px;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 30px 20px;
+    }
+
+    .modal-content h2 {
+        font-size: 1.5rem;
     }
 }
